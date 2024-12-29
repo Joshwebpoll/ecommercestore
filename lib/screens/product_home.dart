@@ -309,6 +309,30 @@ class _ProductHomePageState extends State<ProductHomePage> {
                                 fit: BoxFit.cover,
                                 width: double.infinity,
                                 height: 180,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Icon(Icons.error,
+                                      size: 30, color: Colors.red);
+                                },
+                                loadingBuilder:
+                                    (context, child, loadingProgress) {
+                                  if (loadingProgress == null) {
+                                    return child;
+                                  } else {
+                                    return Center(
+                                      child: CircularProgressIndicator(
+                                        value: loadingProgress
+                                                    .expectedTotalBytes !=
+                                                null
+                                            ? loadingProgress
+                                                    .cumulativeBytesLoaded /
+                                                (loadingProgress
+                                                        .expectedTotalBytes ??
+                                                    1)
+                                            : null,
+                                      ),
+                                    );
+                                  }
+                                },
                               ),
                             ),
                             SizedBox(
@@ -340,7 +364,8 @@ class _ProductHomePageState extends State<ProductHomePage> {
                                         backgroundColor:
                                             Theme.of(context).primaryColor),
                                     onPressed: () {
-                                      print(electronicProducts[index]['name']);
+                                      print(electronicProducts[index]
+                                          .runtimeType);
                                     },
                                     icon: Icon(
                                       Icons.add,

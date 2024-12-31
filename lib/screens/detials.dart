@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:leatning_flutter/cart.dart';
+import 'package:provider/provider.dart';
 
 class DetailsPage extends StatelessWidget {
   final Map<String, dynamic> electronicProduct;
@@ -41,9 +43,17 @@ class DetailsPage extends StatelessWidget {
           child: ElevatedButton(
             onPressed: () {
               // Logic to add the product to the cart
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Product added to cart!')),
-              );
+              final result = context.read<Cart>().addToCart(electronicProduct);
+
+              if (result) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Product added to cart')),
+                );
+              } else {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Product Already Exist')),
+                );
+              }
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.primary,

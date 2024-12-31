@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:leatning_flutter/cart.dart';
 import 'package:leatning_flutter/data.dart';
 import 'package:leatning_flutter/screens/all_category.dart';
 import 'package:leatning_flutter/screens/detials.dart';
 import 'package:leatning_flutter/screens/searchProduct.dart';
+import 'package:provider/provider.dart';
 
 class ProductHomePage extends StatefulWidget {
   const ProductHomePage({super.key});
@@ -364,8 +366,24 @@ class _ProductHomePageState extends State<ProductHomePage> {
                                         backgroundColor:
                                             Theme.of(context).primaryColor),
                                     onPressed: () {
-                                      print(electronicProducts[index]
-                                          .runtimeType);
+                                      final result = context
+                                          .read<Cart>()
+                                          .addToCart(electronicProducts[index]);
+                                      if (result) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                              content: Text(
+                                                  'Product added to cart')),
+                                        );
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                              content: Text(
+                                                  'Product Already Exist')),
+                                        );
+                                      }
                                     },
                                     icon: Icon(
                                       Icons.add,

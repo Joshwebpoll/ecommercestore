@@ -29,9 +29,15 @@ class _HomePageState extends State<HomePage> {
           unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
           currentIndex: currentPage,
           onTap: (value) {
-            setState(() {
-              currentPage = value;
-            });
+            if (value != 1) {
+              setState(() {
+                currentPage = value;
+              });
+            } else {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return CartScreen();
+              }));
+            }
           },
           items: [
             BottomNavigationBarItem(
@@ -47,7 +53,7 @@ class _HomePageState extends State<HomePage> {
                   size: 35,
                 )),
             BottomNavigationBarItem(
-                label: 'Test',
+                label: 'Whishlist',
                 icon: Icon(
                   Icons.shopping_cart_checkout,
                   size: 35,

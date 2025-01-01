@@ -40,4 +40,12 @@ class Cart extends ChangeNotifier {
     index['quantity'] -= 1;
     notifyListeners();
   }
+
+  void deleteProduct(product) {
+    final delete = _cart.indexWhere((item) => item['id'] == product['id']);
+    if (delete != -1) {
+      _cart.remove(product);
+      notifyListeners();
+    }
+  }
 }

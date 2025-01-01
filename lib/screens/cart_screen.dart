@@ -27,11 +27,11 @@ class CartScreen extends StatelessWidget {
                 Expanded(
                   child: ListView.builder(
                     itemCount: cartList.length,
-                    padding: EdgeInsets.only(bottom: 80),
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                     itemBuilder: (context, index) {
                       return Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        // crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10),
@@ -39,89 +39,99 @@ class CartScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10),
                               child: Image.network(
                                 cartList[index]['image'],
-                                height: size.width * 0.25,
-                                width: size.width * 0.3,
+                                height: 60,
+                                width: 60,
                                 fit: BoxFit.cover,
                               ),
                             ),
                           ),
-                          SizedBox(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  cartList[index]['name'],
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                SizedBox(height: 5),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "\$${cartList[index]['price'].toString()}",
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600),
+                          SizedBox(width: 20),
+                          Column(
+                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            // crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                cartList[index]['name'],
+                                maxLines: 1,
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w600),
+                              ),
+                              SizedBox(height: 5),
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "\$${cartList[index]['price'].toString()}",
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  SizedBox(height: 5),
+                                ],
+                              )
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Row(
+                                // mainAxisSize: MainAxisSize.min,
+                                // mainAxisAlignment:
+                                //     MainAxisAlignment.spaceAround,
+                                children: [
+                                  IconButton(
+                                      style: IconButton.styleFrom(
+                                        backgroundColor:
+                                            Color.fromRGBO(234, 240, 247, 1),
+                                      ),
+                                      onPressed: () {
+                                        context
+                                            .read<Cart>()
+                                            .increaseQuantity(cartList[index]);
+                                      },
+                                      icon: Icon(
+                                        Icons.add,
+                                      )),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    cartList[index]['quantity'].toString(),
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  SizedBox(width: 5),
+                                  IconButton(
+                                    style: IconButton.styleFrom(
+                                      backgroundColor:
+                                          Color.fromRGBO(234, 240, 247, 1),
                                     ),
-                                    SizedBox(height: 5),
-                                    Row(
-                                      // mainAxisSize: MainAxisSize.min,
-                                      // mainAxisAlignment:
-                                      //     MainAxisAlignment.spaceAround,
-                                      children: [
-                                        IconButton(
-                                            style: IconButton.styleFrom(
-                                              backgroundColor: Color.fromRGBO(
-                                                  234, 240, 247, 1),
-                                            ),
-                                            onPressed: () {
-                                              context
-                                                  .read<Cart>()
-                                                  .increaseQuantity(
-                                                      cartList[index]);
-                                            },
-                                            icon: Icon(
-                                              Icons.add,
-                                            )),
-                                        SizedBox(width: 5),
-                                        Text(
-                                          cartList[index]['quantity']
-                                              .toString(),
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w600),
-                                        ),
-                                        SizedBox(width: 5),
-                                        IconButton(
-                                          style: IconButton.styleFrom(
-                                            backgroundColor: Color.fromRGBO(
-                                                234, 240, 247, 1),
-                                          ),
-                                          onPressed: () {
-                                            if (cartList[index]['quantity'] ==
-                                                1) {
-                                              return;
-                                            } else {
-                                              context
-                                                  .read<Cart>()
-                                                  .decreaseQuantity(
-                                                      cartList[index]);
-                                            }
-                                          },
-                                          icon: Icon(Icons.remove),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
+                                    onPressed: () {
+                                      if (cartList[index]['quantity'] == 1) {
+                                        return;
+                                      } else {
+                                        context
+                                            .read<Cart>()
+                                            .decreaseQuantity(cartList[index]);
+                                      }
+                                    },
+                                    icon: Icon(Icons.remove),
+                                  ),
+                                ],
+                              ),
+                              IconButton(
+                                onPressed: () {
+                                  context
+                                      .read<Cart>()
+                                      .deleteProduct(cartList[index]);
+                                },
+                                icon: Icon(
+                                  Icons.delete,
+                                  size: 30,
+                                ),
+                                color: Colors.red,
+                              ),
+                            ],
                           )
                         ],
                         //Image.network(cartList[index]['image']);
@@ -167,7 +177,7 @@ class CartScreen extends StatelessWidget {
                           style: TextStyle(
                               color: Colors.black,
                               fontSize: 18,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                     ],

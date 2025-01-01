@@ -52,12 +52,12 @@ class _HomePageState extends State<HomePage> {
                   Icons.shopping_bag,
                   size: 35,
                 )),
-            BottomNavigationBarItem(
-                label: 'Whishlist',
-                icon: Icon(
-                  Icons.shopping_cart_checkout,
-                  size: 35,
-                )),
+            // BottomNavigationBarItem(
+            //     label: 'Whishlist',
+            //     icon: Icon(
+            //       Icons.shopping_cart_checkout,
+            //       size: 35,
+            //     )),
           ]),
     );
   }

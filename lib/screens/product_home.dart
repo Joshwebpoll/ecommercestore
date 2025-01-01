@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:leatning_flutter/cart.dart';
 import 'package:leatning_flutter/data.dart';
 import 'package:leatning_flutter/screens/all_category.dart';
+import 'package:leatning_flutter/screens/cart_screen.dart';
 import 'package:leatning_flutter/screens/detials.dart';
 import 'package:leatning_flutter/screens/searchProduct.dart';
 import 'package:provider/provider.dart';
@@ -31,67 +32,87 @@ class _ProductHomePageState extends State<ProductHomePage> {
             .toList();
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 80,
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        // scrolledUnderElevation: 0.0,
+        surfaceTintColor: Colors.transparent,
+        actions: [
+          SizedBox(width: 15),
+          Container(
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+                color: Color.fromRGBO(193, 229, 3, 1),
+                borderRadius: BorderRadius.circular(20)),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.settings,
+                size: 30,
+              ),
+            ),
+          ),
+          Spacer(),
+          Text.rich(
+            textAlign: TextAlign.center,
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Delivery Address\n',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w100,
+                  ),
+                ),
+                TextSpan(
+                  text: '92 High Street, Ilorin',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+          ),
+          Spacer(),
+          Stack(
+            children: [
+              Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    color: Color.fromRGBO(240, 241, 242, 1),
+                    borderRadius: BorderRadius.circular(30)),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return CartScreen();
+                    }));
+                  },
+                  icon: Icon(
+                    Icons.shopping_basket,
+                    size: 32,
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 0,
+                right: 5,
+                child: CircleAvatar(
+                  radius: 13,
+                  backgroundColor: Theme.of(context).primaryColor,
+                  child: Text(context.watch<Cart>().cart.length.toString()),
+                ),
+              )
+            ],
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Column(
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          color: Color.fromRGBO(193, 229, 3, 1),
-                          borderRadius: BorderRadius.circular(20)),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.settings,
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                    Text.rich(
-                      textAlign: TextAlign.center,
-                      TextSpan(
-                        children: [
-                          TextSpan(
-                            text: 'Delivery Address\n',
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w100,
-                            ),
-                          ),
-                          TextSpan(
-                            text: '92 High Street, Ilorin',
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          )
-                        ],
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                          color: Color.fromRGBO(240, 241, 242, 1),
-                          borderRadius: BorderRadius.circular(30)),
-                      child: IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.notification_add,
-                          size: 30,
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: size.height * 0.03,
-                ),
                 TextField(
                   onSubmitted: (value) {
                     if (value.isNotEmpty) {

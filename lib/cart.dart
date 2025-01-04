@@ -1,7 +1,14 @@
+// import 'dart:convert';
+// import 'dart:js_interop';
+
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 class Cart extends ChangeNotifier {
-  final List<Map<String, dynamic>> _cart = [];
+  List<Map<String, dynamic>> _cart = [];
   List<Map<String, dynamic>> get cart => _cart;
 
   bool addToCart(product) {
@@ -11,6 +18,8 @@ class Cart extends ChangeNotifier {
     } else {
       _cart.add(product);
       notifyListeners();
+      // saveCart();
+
       return true;
     }
   }
@@ -47,5 +56,26 @@ class Cart extends ChangeNotifier {
       _cart.remove(product);
       notifyListeners();
     }
+  }
+
+  Future<void> loadCart() async {
+    final prefs = await SharedPreferences.getInstance();
+    final cartData = prefs.getString('Josh');
+
+    if (cartData != null) {
+      // Decode JSON string into List<Map<String, dynamic>>
+      _cart = List<Map<String, dynamic>>.from(jsonDecode(cartData));
+    }
+    notifyListeners();
+  }
+
+  Future<void> saveCart() async {
+    final prefs = await SharedPreferences.getInstance();
+    final cartData = jsonEncode(_cart);
+    await prefs.setString('Josh', cartData);
+  }
+
+  bool get login {
+    return true;
   }
 }

@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:leatning_flutter/cart.dart';
 import 'package:leatning_flutter/screens/homepage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:leatning_flutter/screens/login_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(ChangeNotifierProvider(create: (context) => Cart(), child: MyApp()));
 }
 
@@ -38,7 +42,7 @@ class MyApp extends StatelessWidget {
         //           borderRadius: BorderRadius.circular(10))),
         // ),
       ),
-      home: HomePage(),
+      home: context.watch<Cart>().login ? HomePage() : LoginScreen(),
     );
   }
 }

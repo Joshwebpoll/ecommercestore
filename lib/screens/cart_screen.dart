@@ -12,14 +12,17 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Cart'),
+        title: Text(
+          'Cart',
+          style: TextStyle(fontSize: 18),
+        ),
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: cartList.isEmpty
           ? Center(
               child: Text(
                 'Cart is Empty',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             )
           : Column(
@@ -27,7 +30,7 @@ class CartScreen extends StatelessWidget {
                 Expanded(
                   child: ListView.builder(
                     itemCount: cartList.length,
-                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                    padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
                     itemBuilder: (context, index) {
                       return Container(
                         // color: Colors.blue,
@@ -35,7 +38,7 @@ class CartScreen extends StatelessWidget {
                         margin: EdgeInsets.symmetric(vertical: 15),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 10),
@@ -43,30 +46,35 @@ class CartScreen extends StatelessWidget {
                                 children: [
                                   ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
-                                    child: Image.network(
+                                    child: Image.asset(
                                       cartList[index]['image'],
                                       height: 60,
                                       width: 60,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
-                                  SizedBox(width: 20),
+                                  SizedBox(width: 15),
                                   Column(
                                     //mainAxisAlignment: MainAxisAlignment.start,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        cartList[index]['name'],
-                                        style: TextStyle(
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w600),
+                                      SizedBox(
+                                        width: 150,
+                                        child: Text(
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          cartList[index]['name'],
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600),
+                                        ),
                                       ),
                                       Text(
                                         "\$${cartList[index]['price'].toString()}",
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
-                                            fontSize: 16,
+                                            fontSize: 14,
                                             fontWeight: FontWeight.w600),
                                       ),
                                       // SizedBox(height: 5),
@@ -100,7 +108,7 @@ class CartScreen extends StatelessWidget {
                                     Text(
                                       cartList[index]['quantity'].toString(),
                                       style: TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 14,
                                           fontWeight: FontWeight.w600),
                                     ),
                                     SizedBox(width: 5),
@@ -129,7 +137,7 @@ class CartScreen extends StatelessWidget {
                                   },
                                   icon: Icon(
                                     Icons.delete,
-                                    size: 25,
+                                    size: 20,
                                   ),
                                   color: Colors.red,
                                 ),
@@ -156,23 +164,21 @@ class CartScreen extends StatelessWidget {
                           Text(
                             "Total",
                             style: TextStyle(
-                                fontSize: 16.0, fontWeight: FontWeight.w500),
+                                fontSize: 16, fontWeight: FontWeight.w500),
                           ),
                           Text(
                             "\$${context.watch<Cart>().getTotal.toStringAsFixed(2)}",
                             style: TextStyle(
-                                fontSize: 18.0, fontWeight: FontWeight.bold),
+                                fontSize: 14, fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
                       // Proceed to Checkout Button
                       ElevatedButton(
-                        onPressed: () {
-                          print("checkout");
-                        },
+                        onPressed: () {},
                         style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 15),
+                                vertical: 10, horizontal: 15),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
                             backgroundColor: Theme.of(context).primaryColor),
@@ -180,7 +186,7 @@ class CartScreen extends StatelessWidget {
                           "Proceed to Checkout",
                           style: TextStyle(
                               color: Colors.black,
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.w500),
                         ),
                       ),

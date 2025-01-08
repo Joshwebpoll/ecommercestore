@@ -18,7 +18,7 @@ class SearchProduct extends StatelessWidget {
         title: Text(
           'Search Item',
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 18,
           ),
         ),
         backgroundColor: Theme.of(context).primaryColor,
@@ -32,7 +32,7 @@ class SearchProduct extends StatelessWidget {
                     child: Text(
                       'No product found',
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                 )
@@ -64,7 +64,7 @@ class SearchProduct extends StatelessWidget {
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
                                 image: DecorationImage(
-                                  image: NetworkImage(
+                                  image: AssetImage(
                                       seachItemProduct[index]['image']),
                                   fit: BoxFit.cover,
                                 ),
@@ -79,13 +79,13 @@ class SearchProduct extends StatelessWidget {
                                 Text(
                                   seachItemProduct[index]['name'],
                                   style: TextStyle(
-                                      fontSize: 20,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Text(
                                     "\$${seachItemProduct[index]['price'].toString()}",
                                     style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 14,
                                         fontWeight: FontWeight.bold))
                               ],
                             )

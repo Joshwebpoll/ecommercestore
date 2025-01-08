@@ -57,7 +57,7 @@ class DetailsPage extends StatelessWidget {
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Theme.of(context).colorScheme.primary,
-              padding: const EdgeInsets.symmetric(vertical: 15),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
@@ -65,7 +65,7 @@ class DetailsPage extends StatelessWidget {
             child: const Text(
               'Add to Cart',
               style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.black),
             ),
@@ -82,7 +82,7 @@ class DetailsPage extends StatelessWidget {
         color: Color.fromRGBO(240, 241, 242, 1),
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: NetworkImage(
+          image: AssetImage(
             electronicProduct['image'],
           ),
         ),
@@ -107,22 +107,22 @@ class DetailsPage extends StatelessWidget {
               children: [
                 Text(
                   electronicProduct['name'],
-                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
                 Text(
                   "\$${electronicProduct['price'].toString()}",
-                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Text(
                   electronicProduct['description'],
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w200),
                 ),
                 SizedBox(height: 20),
                 SizedBox(
-                  height: 50,
+                  height: MediaQuery.of(context).size.height * 0.07,
                   width: double.infinity,
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -137,7 +137,8 @@ class DetailsPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10)),
                             child: Text(
                               electronicProduct['features'][index].toString(),
-                              style: TextStyle(fontWeight: FontWeight.w700),
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w700),
                             ),
                           ),
                         );

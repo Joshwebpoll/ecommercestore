@@ -44,13 +44,13 @@ class _HomePageState extends State<HomePage> {
                 label: 'Home',
                 icon: Icon(
                   Icons.home,
-                  size: 35,
+                  size: 20,
                 )),
             BottomNavigationBarItem(
                 label: 'Cart',
                 icon: Icon(
                   Icons.shopping_bag,
-                  size: 35,
+                  size: 20,
                 )),
             // BottomNavigationBarItem(
             //     label: 'Whishlist',

@@ -9,7 +9,10 @@ class AllCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Category'),
+        title: Text(
+          'Category',
+          style: TextStyle(fontSize: 18),
+        ),
       ),
       body: SafeArea(
           child: Padding(
@@ -31,13 +34,13 @@ class AllCategory extends StatelessWidget {
                     },
                     child: Container(
                       margin: EdgeInsets.only(bottom: 10),
-                      padding: EdgeInsets.all(15),
+                      padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Theme.of(context).primaryColor,
                           borderRadius: BorderRadius.circular(10)),
                       child: Text(
                         allcategory[index],
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 16),
                       ),
                     ),
                   );

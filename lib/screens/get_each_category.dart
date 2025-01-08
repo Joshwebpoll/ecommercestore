@@ -24,7 +24,7 @@ class _GetEachCategoryState extends State<GetEachCategory> {
       appBar: AppBar(
         title: Text(
           widget.eachProduct,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 18),
         ),
         backgroundColor:
             Theme.of(context).primaryColor, // Fixed background color
@@ -57,7 +57,7 @@ class _GetEachCategoryState extends State<GetEachCategory> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
                         image: DecorationImage(
-                          image: NetworkImage(eachProductList[index]['image']),
+                          image: AssetImage(eachProductList[index]['image']),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -71,11 +71,11 @@ class _GetEachCategoryState extends State<GetEachCategory> {
                         Text(
                           eachProductList[index]['name'],
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                              fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         Text("\$${eachProductList[index]['price'].toString()}",
                             style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold))
+                                fontSize: 14, fontWeight: FontWeight.bold))
                       ],
                     )
                   ],

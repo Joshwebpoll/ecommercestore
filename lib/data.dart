@@ -39,8 +39,7 @@ final List<Map<String, dynamic>> electronicProducts = [
     "rating": 4.5,
     "description":
         'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    "image":
-        "https://cdn.pixabay.com/photo/2016/03/27/19/43/samsung-1283938_1280.jpg"
+    "image": "assets/images/smartphone-5519653_1280.jpg"
   },
   {
     "id": 2,
@@ -54,8 +53,7 @@ final List<Map<String, dynamic>> electronicProducts = [
     "rating": 4.8,
     "description":
         'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    "image":
-        "https://cdn.pixabay.com/photo/2016/03/27/07/12/apple-1282241_1280.jpg"
+    "image": "assets/images/apple-1282241_1280.jpg"
   },
   {
     "id": 3,
@@ -69,8 +67,7 @@ final List<Map<String, dynamic>> electronicProducts = [
     "rating": 4.2,
     "description":
         'lorem20  It is a long established  It is a long established   It is a long established It is a long established   It is a long established It is a long established   It is a long established It is a long established   It is a long established It is a long established   It is a long established It is a long established   It is a long established It is a long established   It is a long established It is a long established   It is a long established It is a long established   It is a long established It is a long establishedIt is a long established   It is a long established It is a long established   It is a long established It is a long established   It is a long established It is a long established   It is a long established It is a long established   It is a long established It is a long established   It is a long established It is a long established   It is a long established It is a long established   It is a long established    It is a long established It is a long established   It is a long established  It is a long established It is a long established It is a long established It is a long established It is a long established It is a long establishedIt is a long established It is a long established It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    "image":
-        "https://cdn.pixabay.com/photo/2018/09/17/14/27/headphones-3683983_1280.jpg"
+    "image": "assets/images/headphones-3683983_1280.jpg"
   },
   {
     "id": 4,
@@ -84,8 +81,7 @@ final List<Map<String, dynamic>> electronicProducts = [
     "rating": 4.7,
     "description":
         'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    "image":
-        "https://cdn.pixabay.com/photo/2018/12/22/03/27/smart-tv-3889141_1280.png"
+    "image": "assets/images/images-tv.jpg"
   },
   {
     "id": 5,
@@ -99,8 +95,7 @@ final List<Map<String, dynamic>> electronicProducts = [
     "rating": 4.6,
     "description":
         'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    "image":
-        "https://cdn.pixabay.com/photo/2018/09/17/14/27/headphones-3683983_1280.jpg"
+    "image": "assets/images/headphones-3683983_1280(1).jpg"
   },
   {
     "id": 6,
@@ -114,8 +109,7 @@ final List<Map<String, dynamic>> electronicProducts = [
     "rating": 4.9,
     "description":
         'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    "image":
-        "https://cdn.pixabay.com/photo/2024/05/24/16/40/ai-generated-8785422_1280.jpg"
+    "image": "assets/images/ai-generated-8785422_1280.jpg"
   },
   {
     "id": 7,
@@ -129,8 +123,7 @@ final List<Map<String, dynamic>> electronicProducts = [
     "rating": 4.4,
     "description":
         'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    "image":
-        "https://cdn.pixabay.com/photo/2023/10/07/14/24/smartwatch-8300238_1280.jpg"
+    "image": "assets/images/smartwatch-8300238_1280.jpg"
   },
   {
     "id": 8,
@@ -144,8 +137,7 @@ final List<Map<String, dynamic>> electronicProducts = [
     "rating": 4.3,
     "description":
         'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    "image":
-        "https://cdn.pixabay.com/photo/2020/08/26/14/29/smartphone-5519653_1280.jpg"
+    "image": "assets/images/smartphone-5519653_1280.jpg"
   },
   {
     "id": 9,
@@ -159,8 +151,7 @@ final List<Map<String, dynamic>> electronicProducts = [
     "rating": 4.6,
     "description":
         'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    "image":
-        "https://cdn.pixabay.com/photo/2015/12/07/14/18/drone-1080844_1280.jpg"
+    "image": "assets/images/drone-1080844_1280.jpg"
   },
   {
     "id": 10,
@@ -174,7 +165,6 @@ final List<Map<String, dynamic>> electronicProducts = [
     "rating": 4.1,
     "description":
         'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
-    "image":
-        "https://cdn.pixabay.com/photo/2017/08/10/04/14/iphone-2618080_1280.jpg"
+    "image": "assets/images/iphone-2618080_1280.jpg"
   },
 ];

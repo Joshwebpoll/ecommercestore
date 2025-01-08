@@ -33,16 +33,19 @@ class _ProductHomePageState extends State<ProductHomePage> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 80,
+        toolbarHeight: 50,
         backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         elevation: 0,
         // scrolledUnderElevation: 0.0,
         surfaceTintColor: Colors.transparent,
+
         actions: [
           SizedBox(width: 15),
           Container(
-            padding: EdgeInsets.all(5),
+            width: 40,
+            height: 40,
+            padding: EdgeInsets.all(0),
             decoration: BoxDecoration(
                 color: Color.fromRGBO(193, 229, 3, 1),
                 borderRadius: BorderRadius.circular(20)),
@@ -50,7 +53,7 @@ class _ProductHomePageState extends State<ProductHomePage> {
               onPressed: () {},
               icon: Icon(
                 Icons.settings,
-                size: 30,
+                size: 20,
               ),
             ),
           ),
@@ -62,13 +65,13 @@ class _ProductHomePageState extends State<ProductHomePage> {
                 TextSpan(
                   text: 'Delivery Address\n',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     fontWeight: FontWeight.w100,
                   ),
                 ),
                 TextSpan(
                   text: '92 High Street, Ilorin',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 )
               ],
             ),
@@ -77,7 +80,9 @@ class _ProductHomePageState extends State<ProductHomePage> {
           Stack(
             children: [
               Container(
-                padding: EdgeInsets.all(5),
+                width: 40,
+                height: 40,
+                padding: EdgeInsets.all(0),
                 decoration: BoxDecoration(
                     color: Color.fromRGBO(240, 241, 242, 1),
                     borderRadius: BorderRadius.circular(30)),
@@ -89,22 +94,23 @@ class _ProductHomePageState extends State<ProductHomePage> {
                     }));
                   },
                   icon: Icon(
-                    Icons.shopping_basket,
-                    size: 32,
+                    Icons.shopping_basket_rounded,
+                    size: 20,
                   ),
                 ),
               ),
               Positioned(
                 top: 0,
-                right: 5,
+                right: 0,
                 child: CircleAvatar(
-                  radius: 13,
+                  radius: 12,
                   backgroundColor: Theme.of(context).primaryColor,
                   child: Text(context.watch<Cart>().cart.length.toString()),
                 ),
               )
             ],
-          )
+          ),
+          SizedBox(width: 15),
         ],
       ),
       body: SingleChildScrollView(
@@ -125,22 +131,22 @@ class _ProductHomePageState extends State<ProductHomePage> {
                   controller: searchProduct,
                   decoration: InputDecoration(
                     contentPadding:
-                        EdgeInsets.symmetric(vertical: size.height * 0.023),
+                        EdgeInsets.symmetric(vertical: size.height * 0.01),
                     hintText: 'Search the entire Shop',
                     hintStyle:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.w200),
+                        TextStyle(fontSize: 14, fontWeight: FontWeight.w200),
                     filled: true,
                     fillColor: Color.fromRGBO(240, 241, 242, 1),
                     prefixIcon: Icon(
                       Icons.search_rounded,
-                      size: 30,
+                      size: 20,
                     ),
                     border: OutlineInputBorder(
                       borderSide: BorderSide.none,
                       borderRadius: BorderRadius.circular(15),
                     ),
                   ),
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 14),
                 ),
                 SizedBox(
                   height: size.height * 0.03,
@@ -165,28 +171,28 @@ class _ProductHomePageState extends State<ProductHomePage> {
                       Text(
                         'Delivery is',
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                       Container(
                         margin: EdgeInsets.symmetric(
                           horizontal: size.width * 0.02,
                         ),
                         padding: EdgeInsets.symmetric(
-                            horizontal: size.width * 0.05,
-                            vertical: size.height * 0.002),
+                            horizontal: size.width * 0.02,
+                            vertical: size.height * 0.001),
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(10)),
                         child: Text(
                           '50%',
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
+                              fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                       ),
                       Text(
                         'cheaper',
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                            fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -203,7 +209,7 @@ class _ProductHomePageState extends State<ProductHomePage> {
                       Text(
                         'Categories',
                         style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       TextButton(
                         onPressed: () {
@@ -274,7 +280,7 @@ class _ProductHomePageState extends State<ProductHomePage> {
                       Text(
                         'Flash Sales',
                         style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       Text('See all',
                           style: TextStyle(
@@ -327,34 +333,14 @@ class _ProductHomePageState extends State<ProductHomePage> {
                             // ),
                             ClipRRect(
                               borderRadius: BorderRadius.circular(10),
-                              child: Image.network(
+                              child: Image.asset(
                                 electronicProduct['image'],
                                 fit: BoxFit.cover,
                                 width: double.infinity,
-                                height: 180,
+                                height: 150,
                                 errorBuilder: (context, error, stackTrace) {
                                   return Icon(Icons.error,
-                                      size: 30, color: Colors.red);
-                                },
-                                loadingBuilder:
-                                    (context, child, loadingProgress) {
-                                  if (loadingProgress == null) {
-                                    return child;
-                                  } else {
-                                    return Center(
-                                      child: CircularProgressIndicator(
-                                        value: loadingProgress
-                                                    .expectedTotalBytes !=
-                                                null
-                                            ? loadingProgress
-                                                    .cumulativeBytesLoaded /
-                                                (loadingProgress
-                                                        .expectedTotalBytes ??
-                                                    1)
-                                            : null,
-                                      ),
-                                    );
-                                  }
+                                      size: 18, color: Colors.red);
                                 },
                               ),
                             ),
@@ -364,7 +350,7 @@ class _ProductHomePageState extends State<ProductHomePage> {
                             Text(
                               electronicProducts[index]['name'],
                               style: TextStyle(
-                                fontSize: 19,
+                                fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
                               maxLines: 1,
@@ -378,7 +364,7 @@ class _ProductHomePageState extends State<ProductHomePage> {
                                 Text(
                                   "\$${electronicProducts[index]['price'].toString()}",
                                   style: TextStyle(
-                                    fontSize: 19,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -394,6 +380,7 @@ class _ProductHomePageState extends State<ProductHomePage> {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(
                                           SnackBar(
+                                              duration: Duration(seconds: 1),
                                               content: Text(
                                                   'Product added to cart')),
                                         );
@@ -441,7 +428,7 @@ class _ProductHomePageState extends State<ProductHomePage> {
             },
             child: Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
-              padding: EdgeInsets.all(15),
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: selectedCategory == displayCategories[index]
                     ? Theme.of(context).primaryColor
@@ -451,7 +438,7 @@ class _ProductHomePageState extends State<ProductHomePage> {
               child: Center(
                 child: Text(
                   displayCategories[index],
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                 ),
               ),
             ),

@@ -1,0 +1,9 @@
+# flutter_native_splash:
+#   color: "#ffffff"
+#   image: assets/images/screeno.png
+
+#   android_12:
+#     image: assets/images/screeno.png
+#     icon_background_color: "#ffffff"
+
+#   web: false
